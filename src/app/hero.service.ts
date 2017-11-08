@@ -8,7 +8,7 @@ export  class HeroService {
 
   private baseUrl='api/hi';
 
-  constructor(private http: Http){}
+           constructor(private http: Http){}
 
 getMessage():Promise<string>
 {

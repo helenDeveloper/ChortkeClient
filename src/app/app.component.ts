@@ -23,7 +23,7 @@ message='this is a message from client';
     alert(this.message);
   }
 
-  title = 'app';
+  title = 'chortke application for organizations';
 }
 
 
