@@ -19,8 +19,7 @@ message='this is a message from client';
 
   ngOnInit()
   {
-    this.hservice.getMessage().then(msg => this.message=msg);
-    alert(this.message);
+
   }
 
   title = 'chortke application for organizations';

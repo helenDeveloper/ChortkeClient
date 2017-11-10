@@ -1,4 +1,8 @@
 <p>this is a temp for users</p>
-<li *ngFor="let user of users">
+
+<app-user-detail [user]="selectedUser" (saveOrUpdate)="onSaveOrUpdate($event)" ></app-user-detail>
+
+<li *ngFor="let user of users" (click)="onSelect(user)" >
 <span>{{user.id}}</span>{{user.username}}
 </li>
+

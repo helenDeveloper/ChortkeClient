@@ -6,14 +6,18 @@ import {HttpModule} from "@angular/http";
 import {HeroService} from "./hero.service";
 import {UsersComponent} from "./user/users.component";
 import {UserService} from "./user/user.service";
+import {FormsModule} from "@angular/forms";
+import {UserDetailComponent} from "./user/details/user-detail.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsersComponent
+    UsersComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpModule
   ],
   providers: [HeroService,UserService],
