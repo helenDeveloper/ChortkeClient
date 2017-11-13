@@ -1,0 +1,33 @@
+<p>define your stuff type:</p>
+<label>name:
+  <input type="text" [(ngModel)]="stufftypename" placeholder="stufftypename" >
+
+</label>
+
+
+<label>stufftype_type:
+
+<label>
+
+
+  <mat-form-field>
+    <mat-select [(value)]="selected">
+
+
+
+      <mat-option  *ngFor="let item of types"  value="item.name">string</mat-option>
+      <mat-option value="number">number</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+
+
+
+</label>
+
+
+<!--<wi_stufftype_combo></wi_stufftype_combo>-->
+
+<p>You selected: {{selected}}</p>
+
+

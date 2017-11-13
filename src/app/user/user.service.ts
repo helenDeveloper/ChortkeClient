@@ -1,7 +1,14 @@
-import {Headers, Http, Response} from "@angular/http";
+// import {Headers, Response} from "@angular/http";
 import {User} from "./user";
 import 'rxjs/add/operator/toPromise';
 import {Injectable} from "@angular/core";
+import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
+import {Response} from "@angular/http";
+
+
+
+
+
 
 
 
@@ -11,14 +18,14 @@ export class UserService {
 
   private baseUrl='api/userlist';
   private saveUrl='api/saveUser';
-  private headers = new Headers({ 'Content-Type': 'application/json' });
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-constructor(private http : Http) {}
+constructor(private http : HttpClient) {}
   users: User[];
 getUsers():Promise<User[]>
 {
 
-  return this.http.get(this.baseUrl).toPromise().then(res => res.json()
+  return this.http.get(this.baseUrl).toPromise().then(res => res as User[]
 
   ).catch(this.handleError);
 
@@ -28,8 +35,8 @@ getUsers():Promise<User[]>
 saveOrUpdateUser(user: User) : Promise<number>
 {
 
-  return this.http.post(this.saveUrl,JSON.stringify(user),{headers : this.headers}).toPromise().
-  then( res => res.json() as number  /*this.returnResult(user)*/).catch(this.handleError);
+  return this.http.post(this.saveUrl, JSON.stringify(user) /*json.stringify(user)*/,{headers : this.headers}).toPromise().
+  then( res => res  as number  /*this.returnResult(user)*/).catch(this.handleError);
 
 
 }

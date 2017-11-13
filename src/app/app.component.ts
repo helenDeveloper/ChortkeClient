@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HeroService} from "./hero.service";
+
 
 
 
@@ -8,14 +8,14 @@ import {HeroService} from "./hero.service";
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers:[HeroService]
+  providers:[]
 })
 export class AppComponent implements  OnInit {
 message='this is a message from client';
 
 
 
-  constructor(private hservice:HeroService) {};
+  constructor() {};
 
   ngOnInit()
   {
