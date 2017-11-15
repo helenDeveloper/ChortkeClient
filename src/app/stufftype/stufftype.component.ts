@@ -11,14 +11,29 @@ import {StuffTypeEnum} from "../eums/stufftypeemum";
 export class StuffTyypeType implements OnInit
 {
 
-selected = 'option1';
-
-types : StuffTypeEnum;
+selected = 'string';
+  types = StuffTypeEnum;
+keys:any[];
 
 
   constructor()
-  {}
+  {
+
+    var allkeys = Object.keys(this.types);
+    this.keys =allkeys.slice(allkeys.length / 2);
+
+  }
 
   ngOnInit()
   {}
+
+
+
+  show() : void {
+
+    alert(this.selected);
+
+
+
+  }
 }
