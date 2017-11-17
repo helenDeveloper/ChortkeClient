@@ -32,7 +32,25 @@ ngOnInit()
   );
 
 
+  componentData = null;
 
+  createHelloWorldComponent(){
+  this.componentData = {
+    component: HelloWorldComponent,
+    inputs: {
+      showNum: 9
+    }
+  };
+}
+
+  createWorldHelloComponent(){
+  this.componentData = {
+    component: WorldHelloComponent,
+    inputs: {
+      showNum: 2
+    }
+  };
+}
 
 }
 

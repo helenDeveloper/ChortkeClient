@@ -11,11 +11,11 @@
 
 
   <mat-form-field>
-    <mat-select [(value)]="selected">
+    <mat-select [(ngModel)]="selected">
 
 
 
-      <mat-option  *ngFor="#item of keys" value="item00000000000000000000000000000"   >{{item}}</mat-option>
+      <mat-option  *ngFor="let item of keys"  [value]="item"   >{{item}}</mat-option>
 
 
     </mat-select>
