@@ -1,15 +1,18 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {StuffTypeEnum} from "../eums/stufftypeemum";
+import {StuffType} from "./base/stufftype";
 
 
 @Component({
-  selector : 'wi_stufftype_combo',
-  templateUrl : './stufftype.component.html'
+  selector : 'app-stufftype-edit',
+  templateUrl : './stufftype-edit.component.html'
 
 })
 
 export class StuffTyypeType implements OnInit
 {
+
+@Input() aStuffType : StuffType;
 
 selected = 'string';
   types = StuffTypeEnum;

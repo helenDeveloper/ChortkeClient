@@ -7,13 +7,16 @@ import { AppComponent } from './app.component';
 
 import {UsersComponent} from "./user/users.component";
 import {UserService} from "./user/user.service";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserDetailComponent} from "./user/details/user-detail.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
-import {StuffTyypeType} from "./stufftype/stufftype.component";
+import {StuffTyypeType} from "./stufftype/stufftype-edit.component";
+import {DynamicFormComponent} from "./dynamicforms/dynamicForm.component";
+import {DynamicFormQuestionComponent} from "./dynamicforms/dynamic-form-question.component";
+import {StuffTypeList} from "./stufftype/list/stufftype-list.component";
 
 
 
@@ -27,7 +30,10 @@ import {StuffTyypeType} from "./stufftype/stufftype.component";
     UsersComponent,
     UserDetailComponent,
     DashboardComponent,
-    StuffTyypeType
+    StuffTyypeType,
+    DynamicFormComponent,
+    DynamicFormQuestionComponent,
+    StuffTypeList
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,9 @@ import {StuffTyypeType} from "./stufftype/stufftype.component";
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule
+
 
 
   ],

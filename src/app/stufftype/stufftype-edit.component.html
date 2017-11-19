@@ -1,6 +1,6 @@
 <p>define your stuff type:</p>
 <label>name:
-  <input type="text" [(ngModel)]="stufftypename" placeholder="stufftypename" >
+  <input type="text" [(ngModel)]="stuffTypeModel.label" placeholder="stufftypename" >
 
 </label>
 
@@ -11,7 +11,7 @@
 
 
   <mat-form-field>
-    <mat-select [(ngModel)]="selected">
+    <mat-select [(ngModel)]="stuffTypeModel.contentType">
 
 
 
@@ -28,6 +28,6 @@
 
 <!--<wi_stufftype_combo></wi_stufftype_combo>-->
 
-<p>You selected: {{selected}}</p>
+<!--<p>You selected: {{selected}}</p>-->
 
-<button value="click" (click)="show()" >click</button>
+<!--<button value="click" (click)="show()" >click</button>-->

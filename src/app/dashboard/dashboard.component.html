@@ -1,13 +1,12 @@
 <p>users in dashboard:</p>
 
-
+<div>
+  <h2>Job Application for Heroes</h2>
+  <app-dynamic-form [types]="itemsStuffs"></app-dynamic-form>
+</div>
 
 <li *ngFor="let user of users" >
 <span>{{user.id}}</span>{{user.username}}
 </li>
-<div>
-  <h2>Lets dynamically create some components!</h2>
-  <button (click)="createHelloWorldComponent()">Create Hello World</button>
-  <button (click)="createWorldHelloComponent()">Create World Hello</button>
-</div>
-<dynamic-component [componentData]="componentData"></dynamic-component>
+
+
