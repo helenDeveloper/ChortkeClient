@@ -13,10 +13,10 @@ import {AppRoutingModule} from "./app-routing.module";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
-import {StuffTyypeType} from "./stufftype/stufftype-edit.component";
+import {StuffTypeEditComponent} from "./stufftype/stufftype-edit.component";
 import {DynamicFormComponent} from "./dynamicforms/dynamicForm.component";
 import {DynamicFormQuestionComponent} from "./dynamicforms/dynamic-form-question.component";
-import {StuffTypeList} from "./stufftype/list/stufftype-list.component";
+import { StuffTypeListComponent} from "./stufftype/list/stufftype-list.component";
 
 
 
@@ -30,10 +30,10 @@ import {StuffTypeList} from "./stufftype/list/stufftype-list.component";
     UsersComponent,
     UserDetailComponent,
     DashboardComponent,
-    StuffTyypeType,
+    StuffTypeEditComponent,
     DynamicFormComponent,
     DynamicFormQuestionComponent,
-    StuffTypeList
+    StuffTypeListComponent
   ],
   imports: [
     BrowserModule,

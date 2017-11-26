@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {StuffTypeEnum} from "../eums/stufftypeemum";
 import {StuffType} from "./base/stufftype";
 
@@ -9,14 +9,18 @@ import {StuffType} from "./base/stufftype";
 
 })
 
-export class StuffTyypeType implements OnInit
+export class StuffTypeEditComponent implements OnInit
 {
 
 @Input() aStuffType : StuffType;
 
+  @Output() saveOrUpdate = new EventEmitter<StuffType>();
+
 selected = 'string';
   types = StuffTypeEnum;
 keys:any[];
+
+ public stuffTypeModel=new StuffType();
 
 
   constructor()
@@ -32,9 +36,9 @@ keys:any[];
 
 
 
-  show() : void {
+  onSaveStuffType() : void {
 
-    alert(this.selected);
+    this.saveOrUpdate.emit(this.stuffTypeModel);
 
 
 

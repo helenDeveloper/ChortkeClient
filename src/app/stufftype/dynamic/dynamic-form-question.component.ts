@@ -5,6 +5,6 @@ import {Component} from "@angular/core";
 })
 export class DynamicFormQuestionComponent {
 
-  @Input() form: FormGroup;
-  get isValid() { return this.form.controls[this.question.key].valid; }
+  // @Input() form: FormGroup;
+  // get isValid() { return this.form.controls[this.question.key].valid; }
 }

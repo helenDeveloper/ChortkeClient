@@ -10,16 +10,16 @@ import {StuffType} from "../base/stufftype";
 
 })
 
-export class StuffTypeList implements OnInit
+export class StuffTypeListComponent implements OnInit
 {
 
   stuffTypes : StuffType[];
-
+  selectedItem: StuffType;
 
   constructor(private  stuffTypeService : StuffTypeService)
   {
 
-
+      this.selectedItem= new StuffType();
 
 
 
@@ -31,6 +31,21 @@ export class StuffTypeList implements OnInit
 this.stuffTypeService.getStuffTypes().then(res => this.stuffTypes = res);
 
   }
+  onSaveOrUpdate(event)
+  {
 
 
+
+    this.stuffTypeService.saveOrUpdateStuffType(event).then(res => this.addToList(res,event));
+
+  }
+  private  addToList(res: number,event)
+  {
+    const stuffType =new StuffType('',event.label, event.contentType);
+    // stuffType.label=event.label;
+    // stuffType.contentType= event.contentType;
+    this.stuffTypes.push(stuffType);
+
+
+  }
 }

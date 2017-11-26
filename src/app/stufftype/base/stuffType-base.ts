@@ -15,10 +15,10 @@ export class StuffTypeBase<T>{
   } ={})
   {
 
-    this.value = options.value;
-    this.key = options.key || '';
-    this.label = options.label || '';
-    this.controlType = options.controlType || '';
+    this.value = option.value;
+    this.key = option.key || '';
+    this.label = option.label || '';
+    this.controlType = option.controlType || '';
 
   }
 }

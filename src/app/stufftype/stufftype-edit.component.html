@@ -5,6 +5,11 @@
 </label>
 
 
+<label>metric:
+  <input type="text" [(ngModel)]="stuffTypeModel.key" placeholder="key" >
+
+</label>
+
 <label>stufftype_type:
 
 
@@ -24,7 +29,7 @@
 
 
 </label>
-
+<button (click)="onSaveStuffType()" >save</button>
 
 <!--<wi_stufftype_combo></wi_stufftype_combo>-->
 
