@@ -23,9 +23,11 @@ temp = new StuffTypeBase(
 
 )
 
-  toFormGroup() {
 
-    return new FormGroup(this.temp);
+
+toFormGroup() {
+  let groups: any = {};
+    return new FormGroup(this.groups);
   }
 
 }

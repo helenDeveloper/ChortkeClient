@@ -6,7 +6,7 @@ export class StuffType
   label: string;
   contentType: string;
 
-  constructor(key : string,label: string,contentType: string)
+  constructor(key ?: string,label?: string,contentType?: string)
   {
 
 

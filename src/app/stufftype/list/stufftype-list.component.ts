@@ -36,7 +36,7 @@ this.stuffTypeService.getStuffTypes().then(res => this.stuffTypes = res);
 
 
 
-    this.stuffTypeService.saveOrUpdateStuffType(event).then(res => this.addToList(res,event));
+    this.stuffTypeService.saveOrUpdateStuffType(event).then(res => { this.addToList(res,event), this.showMessage()});
 
   }
   private  addToList(res: number,event)
@@ -46,6 +46,15 @@ this.stuffTypeService.getStuffTypes().then(res => this.stuffTypes = res);
     // stuffType.contentType= event.contentType;
     this.stuffTypes.push(stuffType);
 
+
+  }
+
+  private  showMessage() : void {
+
+
+    alert('hello');
+
+    this.selectedItem= new StuffType();
 
   }
 }
