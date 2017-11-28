@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {StuffTypeService} from "../stuffType.service";
 import {StuffType} from "../base/stufftype";
+import {Subject} from "rxjs/Subject";
 
 
 @Component({
@@ -36,7 +37,7 @@ this.stuffTypeService.getStuffTypes().then(res => this.stuffTypes = res);
 
 
 
-    this.stuffTypeService.saveOrUpdateStuffType(event).then(res => { this.addToList(res,event), this.showMessage()});
+    this.stuffTypeService.saveOrUpdateStuffType(event.item).then(res => { this.addToList(res,event.item), this.showMessage(event.su)});
 
   }
   private  addToList(res: number,event)
@@ -49,9 +50,9 @@ this.stuffTypeService.getStuffTypes().then(res => this.stuffTypes = res);
 
   }
 
-  private  showMessage() : void {
+  private  showMessage(su : Subject<any>) : void {
 
-
+su.next();
     alert('hello');
 
     this.selectedItem= new StuffType();

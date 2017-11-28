@@ -1,4 +1,6 @@
 <p>define your stuff type:</p>
+<form #sform="ngForm" >
+
 <label>name:
   <input type="text" [(ngModel)]="stuffTypeModel.label" placeholder="stufftypename" >
 
@@ -30,7 +32,7 @@
 
 </label>
 <button (click)="onSaveStuffType()" >save</button>
-
+</form>
 <!--<wi_stufftype_combo></wi_stufftype_combo>-->
 
 <!--<p>You selected: {{selected}}</p>-->

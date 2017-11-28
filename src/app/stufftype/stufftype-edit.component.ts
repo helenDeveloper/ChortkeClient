@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {StuffTypeEnum} from "../eums/stufftypeemum";
 import {StuffType} from "./base/stufftype";
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 
 
 @Component({
@@ -15,7 +17,7 @@ export class StuffTypeEditComponent implements OnInit
 @Input() aStuffType : StuffType;
 
   @Output() saveOrUpdate = new EventEmitter<StuffType>();
-
+  private subject = new Subject<any>();
 selected = 'string';
   types = StuffTypeEnum;
 keys:any[];
@@ -28,6 +30,12 @@ keys:any[];
 
     var allkeys = Object.keys(this.types);
     this.keys =allkeys.slice(allkeys.length / 2);
+    this.subject.subscribe(mess => {
+
+      alert('hi buddy!!!!');
+      stuffTypeModel.
+
+    });
 
   }
 
@@ -38,7 +46,9 @@ keys:any[];
 
   onSaveStuffType() : void {
 
-    this.saveOrUpdate.emit(this.stuffTypeModel);
+
+
+    this.saveOrUpdate.emit({item : this.stuffTypeModel,su : this.subject});
 
 
 
