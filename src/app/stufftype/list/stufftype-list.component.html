@@ -2,10 +2,10 @@
 
 
 <p>stuff type list:</p>
-
+<div *ngIf="selectedItem">
 <app-stufftype-edit [aStuffType]='selectedItem'  (saveOrUpdate)="onSaveOrUpdate($event)" ></app-stufftype-edit>
 
-
+</div>
 <label>
 
   <li  *ngFor="let st of stuffTypes" ><span>{{st.label}} {{st.contentType}}</span> </li>

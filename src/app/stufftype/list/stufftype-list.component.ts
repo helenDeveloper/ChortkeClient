@@ -37,12 +37,12 @@ this.stuffTypeService.getStuffTypes().then(res => this.stuffTypes = res);
 
 
 
-    this.stuffTypeService.saveOrUpdateStuffType(event.item).then(res => { this.addToList(res,event.item), this.showMessage(event.su)});
+    this.stuffTypeService.saveOrUpdateStuffType(event).then(res => { this.addToList(res,event)});
 
   }
   private  addToList(res: number,event)
   {
-    const stuffType =new StuffType('',event.label, event.contentType);
+    const stuffType =new StuffType(event.label,event.label, event.contentType);
     // stuffType.label=event.label;
     // stuffType.contentType= event.contentType;
     this.stuffTypes.push(stuffType);

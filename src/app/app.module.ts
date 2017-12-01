@@ -38,6 +38,7 @@ import { StuffTypeListComponent} from "./stufftype/list/stufftype-list.component
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,

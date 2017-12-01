@@ -1,5 +1,30 @@
 <p>define your stuff type:</p>
-<form #sform="ngForm" >
+
+<form novalidate [formGroup]="stuffTypeForm" (ngSubmit)="onSubmit()">
+
+<label>name:
+  <input type="text" formControlName="label" placeholder="stufftypename" >
+
+</label>
+
+  <label>metric:
+    <input type="text"  formControlName="key"  placeholder="key" >
+
+  </label>
+
+ <label>stufftype_type:
+    <select formControlName="contentType" >
+        <option  *ngFor="let item of keys"  [value]="item"   >{{item}}</option>
+    </select>
+  </label>
+
+
+<button type="submit" [disabled]="stuffTypeForm.pristine" >save or update</button>
+<button type="reset" (click)="revert()" [disabled]="stuffTypeForm.pristine" >revert</button>
+
+
+ </form>
+<!--<form #sform="ngForm" >
 
 <label>name:
   <input type="text" [(ngModel)]="stuffTypeModel.label" placeholder="stufftypename" >
@@ -32,7 +57,7 @@
 
 </label>
 <button (click)="onSaveStuffType()" >save</button>
-</form>
+</form>-->
 <!--<wi_stufftype_combo></wi_stufftype_combo>-->
 
 <!--<p>You selected: {{selected}}</p>-->
