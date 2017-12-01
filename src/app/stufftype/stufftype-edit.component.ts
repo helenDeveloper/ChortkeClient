@@ -37,6 +37,7 @@ export class StuffTypeEditComponent implements OnInit,OnChanges
       key: ['', Validators.required],
       contentType: ['', Validators.required]
 
+
     });
 
   }
