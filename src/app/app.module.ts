@@ -17,12 +17,8 @@ import {StuffTypeEditComponent} from "./stufftype/stufftype-edit.component";
 import {DynamicFormComponent} from "./dynamicforms/dynamicForm.component";
 import {DynamicFormQuestionComponent} from "./dynamicforms/dynamic-form-question.component";
 import { StuffTypeListComponent} from "./stufftype/list/stufftype-list.component";
-
-
-
-
-
-
+import {FactorListComponent} from "./factor/list/factor-list.component";
+import {FactorEditComponent} from "./factor/edit/factor-edit.component";
 
 @NgModule({
   declarations: [
@@ -33,7 +29,9 @@ import { StuffTypeListComponent} from "./stufftype/list/stufftype-list.component
     StuffTypeEditComponent,
     DynamicFormComponent,
     DynamicFormQuestionComponent,
-    StuffTypeListComponent
+    StuffTypeListComponent,
+    FactorListComponent,
+    FactorEditComponent
   ],
   imports: [
     BrowserModule,

@@ -1,34 +1,54 @@
 
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs/Observable";
+import {Factor} from "./base/factor";
+import {catchError} from "rxjs/operators";
+import {of} from "rxjs/observable/of";
 @Injectable()
 export  class FactorService {
+
+
+  private listUrl = 'api/factor/list';
+private  saveUrl ='api/factor/save';
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http : HttpClient  )
   {}
 
-  getStuffTypes() : Promise<StuffType[]>{
 
-    return this.http.get(this.baseUrl).toPromise().then(res => res as StuffType[]).catch(this.handleError);
 
-  }
-  saveOrUpdateStuffType(stuffType: StuffType) : Promise<number>
-  {
 
-    return this.http.post(this.saveUrl, JSON.stringify(stuffType) /*json.stringify(user)*/,{headers : this.headers}).toPromise().
-    then( res => res  as number  /*this.returnResult(user)*/).catch(this.handleError);
+  getFactors() : Observable<Factor[]>{
 
+    return this.http.get<Factor[]>(this.listUrl).pipe(catchError(this.handleError('getFactors',[])));
 
   }
-
-
-
-
-  private handleError(error :any)
+  saveOrUpdateFactor(factor: Factor) : Observable<any>
   {
 
-    console.error('an error occurred: ',error);
-    return Promise.reject(error.message || error );
+    return this.http.post<any>(this.saveUrl, factor /*json.stringify(user)*/,{headers : this.headers}).pipe(catchError(this.handleError('saveOrUpdateFactor',[])));
+
+
+
+  }
+
+
+
+
+  private handleError<T>(operation = 'operation', result?: T)
+  {
+
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
 
 
 

@@ -17,7 +17,7 @@ export class StuffTypeEditComponent implements OnInit,OnChanges
   stuffTypeForm: FormGroup;
 
   @Input() aStuffType : StuffType;
-  @Output() saveOrUpdate = new EventEmitter<StuffType>();
+  @Output() saveOrUpdate = new EventEmitter<any>();
 
 
   private sub= new Subject<any>();
