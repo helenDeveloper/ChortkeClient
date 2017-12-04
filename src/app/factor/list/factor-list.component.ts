@@ -27,17 +27,17 @@ this.selectedItem= new Factor();
   ngOnInit()
   {
 
-    this.factorServoice.getFactors().subscribe(facts => {this.showMess(facts)});
+    this.factorServoice.getFactors().subscribe(facts => {this.testi(facts)});
 
 
   }
 
 
-  showMess(facts : Factor[]) : void
+  testi(items : Factor[]) : void
   {
 
-    alert(facts);
-    const test = facts;
+
+this.factors=items;
 
   }
 
@@ -51,8 +51,8 @@ this.selectedItem= new Factor();
   }
   private  addToList(res: number,event)
   {
-    // this.factors.push(event);
-    // event.abev.next();
+    this.factors.push(event.item);
+    event.abev.next();
 
 
   }
