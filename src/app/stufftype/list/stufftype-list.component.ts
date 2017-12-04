@@ -25,7 +25,11 @@ export class StuffTypeListComponent implements OnInit
 
 
   }
+  onSelect(st :StuffType) :void {
 
+    this.selectedItem=st;
+
+  }
   ngOnInit()
   {
 
@@ -37,15 +41,16 @@ this.stuffTypeService.getStuffTypes().then(res => this.stuffTypes = res);
 
 
 
-    this.stuffTypeService.saveOrUpdateStuffType(event).then(res => { this.addToList(res,event)});
+    this.stuffTypeService.saveOrUpdateStuffType(event.item).then(res => { this.addToList(res,event)});
 
   }
   private  addToList(res: number,event)
   {
-    const stuffType =new StuffType(event.label,event.label, event.contentType);
+    const stuffType =new StuffType(event.item.key,event.item.label, event.item.contentType);
     // stuffType.label=event.label;
     // stuffType.contentType= event.contentType;
     this.stuffTypes.push(stuffType);
+    event.abev.next();
 
 
   }

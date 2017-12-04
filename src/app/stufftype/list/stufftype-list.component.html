@@ -8,7 +8,7 @@
 </div>
 <label>
 
-  <li  *ngFor="let st of stuffTypes" ><span>{{st.label}} {{st.contentType}}</span> </li>
+  <li  *ngFor="let st of stuffTypes" (click)="onSelect(st)" ><span>{{st.label}} {{st.contentType}}</span> </li>
 
 
 
