@@ -73,6 +73,8 @@ this.aFactor= new Factor();
   }
   onSubmit() {
 
+
+
     const  formModel =this.factorForm.value;
     const saveFactor : Factor ={title : formModel.title as string,
       price : formModel.price as number, purchaseDate : formModel.selectedDate as Date
