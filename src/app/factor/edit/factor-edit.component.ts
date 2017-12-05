@@ -3,14 +3,23 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 import {Factor} from "../base/factor";
 
+
 @Component({
   selector : 'app-factor-edit',
   templateUrl : './factor-edit.component.html'
 
 })
 
+
 export class FactorEditComponent implements OnInit,OnChanges
 {
+
+
+  datePickerConfig = {
+    drops: 'down',
+    format: 'jYYYY/jMM/jD',
+    calendarSystem : 'ECalendarSystem.jalali'
+  };
 
   factorForm: FormGroup;
 
@@ -22,6 +31,8 @@ export class FactorEditComponent implements OnInit,OnChanges
 
   constructor(private fb : FormBuilder)
   {
+    // dateObject = moment('1395-11-22','jYYYY,jMM,jDD');
+    // dateObject.format('jYYYY/jMM/jD');
 this.aFactor= new Factor();
 
     this.createForm();
@@ -33,8 +44,8 @@ this.aFactor= new Factor();
     this.factorForm = this.fb.group({
 
       title: ['', Validators.required],
-      price: ['', Validators.required]
-
+      price: ['', Validators.required],
+      selectedDate : ['']
 
     });
 
@@ -45,7 +56,8 @@ this.aFactor= new Factor();
     this.factorForm.reset({
 
       title: this.aFactor.title,
-      price: this.aFactor.price
+      price: this.aFactor.price,
+      selectedDate : this.aFactor.purchaseDate
 
     });
 
@@ -60,13 +72,24 @@ this.aFactor= new Factor();
 
   }
   onSubmit() {
+
     const  formModel =this.factorForm.value;
     const saveFactor : Factor ={title : formModel.title as string,
-      price : formModel.price as number
+      price : formModel.price as number, purchaseDate : formModel.selectedDate as Date
     };
 
+    this.sho(saveFactor);
     this.saveOrUpdate.emit({item :saveFactor, abev : this.sub});
 
   }
 
+  private  sho(it : Factor)
+  {
+
+    debugger;
+alert(it.purchaseDate);
+    let ite= it;
+
+
+  }
 }

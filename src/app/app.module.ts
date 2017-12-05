@@ -19,6 +19,7 @@ import {DynamicFormQuestionComponent} from "./dynamicforms/dynamic-form-question
 import { StuffTypeListComponent} from "./stufftype/list/stufftype-list.component";
 import {FactorListComponent} from "./factor/list/factor-list.component";
 import {FactorEditComponent} from "./factor/edit/factor-edit.component";
+import {DpDatePickerModule} from "ng2-jalali-date-picker";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {FactorEditComponent} from "./factor/edit/factor-edit.component";
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DpDatePickerModule
 
 
 

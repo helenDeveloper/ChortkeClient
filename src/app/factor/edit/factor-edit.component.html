@@ -12,7 +12,10 @@
 
   </label>
 
+  <label>purchase date:
 
+  <input name="purchaseDateName" formControlName="selectedDate" [dpDayPicker]="datePickerConfig"  theme="dp-material" dir="rtl"  />
+  </label>
 
 <button type="submit" [disabled]="factorForm.pristine" >save or update</button>
 <button type="reset" (click)="revert()" [disabled]="factorForm.pristine" >revert</button>

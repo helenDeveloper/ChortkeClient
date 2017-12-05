@@ -24,8 +24,25 @@ private  saveUrl ='api/factor/save';
     return this.http.get<Factor[]>(this.listUrl).pipe(catchError(this.handleError('getFactors',[])));
 
   }
+
+
+
+
+
   saveOrUpdateFactor(factor: Factor) : Observable<any>
   {
+
+
+
+
+
+
+
+
+    debugger;
+
+
+
 
     return this.http.post<any>(this.saveUrl, factor /*json.stringify(user)*/,{headers : this.headers}).pipe(catchError(this.handleError('saveOrUpdateFactor',[])));
 
