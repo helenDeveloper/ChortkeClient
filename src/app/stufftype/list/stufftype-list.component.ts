@@ -21,9 +21,6 @@ export class StuffTypeListComponent implements OnInit
   {
 
       this.selectedItem= new StuffType();
-
-
-
   }
   onSelect(st :StuffType) :void {
 

@@ -26,8 +26,8 @@ temp = new StuffTypeBase(
 
 
 toFormGroup() {
-  let groups: any = {};
-    return new FormGroup(this.groups);
+  const groups: any = {};
+    return new FormGroup(groups);
   }
 
 }
