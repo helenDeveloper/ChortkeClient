@@ -2,7 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output,OnChanges } from "@angula
 import {StuffType} from "./base/stufftype";
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {StuffTypeEnum} from "../eums/stufftypeemum";
-
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector : 'app-stufftype-edit',
@@ -18,6 +19,9 @@ export class StuffTypeEditComponent implements OnInit,OnChanges
   @Input() aStuffType : StuffType;
   @Output() saveOrUpdate = new EventEmitter<StuffType>();
 
+
+  private sub= new Subject<any>();
+
   types = StuffTypeEnum;
   keys:any[];
   constructor(private fb : FormBuilder)
@@ -26,7 +30,7 @@ export class StuffTypeEditComponent implements OnInit,OnChanges
     var allkeys = Object.keys(this.types);
     this.keys =allkeys.slice(allkeys.length / 2);
     this.createForm();
-// this.inistiateForm();
+    this.sub.subscribe(mess => {this.stuffTypeForm.reset()});
 
   }
   createForm() : void {
@@ -39,19 +43,6 @@ export class StuffTypeEditComponent implements OnInit,OnChanges
 
 
     });
-
-  }
-
-  inistiateForm() : void {
-
-    this.stuffTypeForm.setValue({
-
-      label: this.aStuffType.label,
-      key: this.aStuffType.key,
-      contentType: this.aStuffType.contentType
-
-    });
-
 
   }
 
@@ -74,8 +65,8 @@ export class StuffTypeEditComponent implements OnInit,OnChanges
 
   revert() {
 
-    this.ngOnChanges();
-
+    // this.ngOnChanges();
+    this.stuffTypeForm.reset();
 
   }
 
@@ -87,9 +78,9 @@ export class StuffTypeEditComponent implements OnInit,OnChanges
     const saveStuffType : StuffType ={label : formModel.label as string,
       key : formModel.key as string,
       contentType: formModel.contentType as string
-      };
+    };
 
-    this.saveOrUpdate.emit(saveStuffType);
+    this.saveOrUpdate.emit({item :saveStuffType, abev : this.sub});
 
   }
 

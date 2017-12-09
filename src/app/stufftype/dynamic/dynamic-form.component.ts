@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {StuffTypeControlService} from "../service/stuffType-control.service";
 import {FormGroup} from "@angular/forms";
 
