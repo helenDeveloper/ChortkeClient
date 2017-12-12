@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output,OnChanges } from "@angula
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 import {Factor} from "../base/factor";
+import * as moment from 'jalali-moment';
+
 
 
 @Component({
@@ -76,11 +78,20 @@ this.aFactor= new Factor();
 
 
     const  formModel =this.factorForm.value;
+
+    let jDate = moment(formModel.selectedDate as Date, 'YYYY/MM/DD').locale('en').format('YYYY/MM/DD'); // 1989/01/24
+    let mDate= new Date(jDate);
+    alert(mDate.toString());
+
     const saveFactor : Factor ={title : formModel.title as string,
-      price : formModel.price as number, purchaseDate : formModel.selectedDate as Date
+      price : formModel.price as number, purchaseDate : mDate
     };
 
-    this.sho(saveFactor);
+    // this.sho(saveFactor);
+
+
+
+
     this.saveOrUpdate.emit({item :saveFactor, abev : this.sub});
 
   }
@@ -88,9 +99,14 @@ this.aFactor= new Factor();
   private  sho(it : Factor)
   {
 
-    debugger;
 alert(it.purchaseDate);
+    let te = moment('1367/11/04', 'YYYY/MM/DD').locale('en').format('YYYY/MM/DD'); // 1989/01/24
+    alert(te);
+    let fin= new Date(te);
+    alert(fin);
     let ite= it;
+
+
 
 
   }
