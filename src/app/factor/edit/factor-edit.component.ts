@@ -55,11 +55,13 @@ this.aFactor= new Factor();
 
   ngOnChanges() {
 
+    let jmoment = moment(this.aFactor.purchaseDate);
+
     this.factorForm.reset({
 
       title: this.aFactor.title,
       price: this.aFactor.price,
-      selectedDate : this.aFactor.purchaseDate
+      selectedDate : jmoment.format("jYYYY/jMM/jDD")
 
     });
 
@@ -79,9 +81,11 @@ this.aFactor= new Factor();
 
     const  formModel =this.factorForm.value;
 
-    let jDate = moment(formModel.selectedDate as Date, 'YYYY/MM/DD').locale('en').format('YYYY/MM/DD'); // 1989/01/24
+    // alert(formModel.selectedDate);
+    let jDate = moment(formModel.selectedDate, 'jYYYY/jMM/jDD').locale('en').format('YYYY/MM/DD'); // 1989/01/24
+    // alert(jDate);
     let mDate= new Date(jDate);
-    alert(mDate.toString());
+    // alert(mDate.toString());
 
     const saveFactor : Factor ={title : formModel.title as string,
       price : formModel.price as number, purchaseDate : mDate

@@ -20,9 +20,11 @@ import { StuffTypeListComponent} from "./stufftype/list/stufftype-list.component
 import {FactorListComponent} from "./factor/list/factor-list.component";
 import {FactorEditComponent} from "./factor/edit/factor-edit.component";
 import {DpDatePickerModule} from "ng2-jalali-date-picker";
+import {JalaliDatePipe} from "./pipes/JalaliDate.pipe";
 
 @NgModule({
   declarations: [
+    JalaliDatePipe,
     AppComponent,
     UsersComponent,
     UserDetailComponent,
@@ -33,6 +35,7 @@ import {DpDatePickerModule} from "ng2-jalali-date-picker";
     StuffTypeListComponent,
     FactorListComponent,
     FactorEditComponent
+
   ],
   imports: [
     BrowserModule,
