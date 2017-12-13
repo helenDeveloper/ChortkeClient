@@ -3,18 +3,23 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 import {Factor} from "../base/factor";
 import * as moment from 'jalali-moment';
+import {StuffTypeService} from "../../stufftype/stuffType.service";
+import {StuffType} from "../../stufftype/base/stufftype";
 
 
 
 @Component({
   selector : 'app-factor-edit',
-  templateUrl : './factor-edit.component.html'
+  templateUrl : './factor-edit.component.html',
+  providers : [StuffTypeService]
 
 })
 
 
 export class FactorEditComponent implements OnInit,OnChanges
 {
+
+  stuffTypeList : StuffType[] =[];
 
 
   datePickerConfig = {
@@ -31,7 +36,7 @@ export class FactorEditComponent implements OnInit,OnChanges
 
   private sub= new Subject<any>();
 
-  constructor(private fb : FormBuilder)
+  constructor(private fb : FormBuilder, private stuffTypeService :StuffTypeService)
   {
     // dateObject = moment('1395-11-22','jYYYY,jMM,jDD');
     // dateObject.format('jYYYY/jMM/jD');
@@ -47,7 +52,8 @@ this.aFactor= new Factor();
 
       title: ['', Validators.required],
       price: ['', Validators.required],
-      selectedDate : ['']
+      selectedDate : [''],
+      stuffType: ['', Validators.required]
 
     });
 
@@ -61,14 +67,19 @@ this.aFactor= new Factor();
 
       title: this.aFactor.title,
       price: this.aFactor.price,
-      selectedDate : jmoment.format("jYYYY/jMM/jDD")
-
+      selectedDate : jmoment.format("jYYYY/jMM/jDD"),
+      stuffType : this.aFactor.StuffTypes
     });
 
   }
 
   ngOnInit()
-  {}
+  {
+
+this.stuffTypeService.getStuffTypes().subs
+
+
+  }
   revert() {
 
     // this.ngOnChanges();

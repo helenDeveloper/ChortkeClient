@@ -5,7 +5,7 @@ export class StuffType
   key: string;
   label: string;
   contentType: string;
-
+value : string;
   constructor(key ?: string,label?: string,contentType?: string)
   {
 

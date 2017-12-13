@@ -17,6 +17,16 @@
   <input name="purchaseDateName" formControlName="selectedDate" [dpDayPicker]="datePickerConfig"  theme="dp-material" dir="rtl"  />
   </label>
 
+
+  <label>stufftype_type:
+    <select formControlName="stuffType" >
+      <option  *ngFor="let stf of stuffTypeList"  [value]="item"   >{{item.label}}</option>
+    </select>
+  </label>
+
+
+
+
 <button type="submit" [disabled]="factorForm.pristine" >save or update</button>
 <button type="reset" (click)="revert()" [disabled]="factorForm.pristine" >revert</button>
 
