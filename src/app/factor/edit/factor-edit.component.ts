@@ -5,13 +5,15 @@ import {Factor} from "../base/factor";
 import * as moment from 'jalali-moment';
 import {StuffTypeService} from "../../stufftype/stuffType.service";
 import {StuffType} from "../../stufftype/base/stufftype";
+import {StuffTypeControlService} from "../../stufftype/stuffType-control.service";
+import {forEach} from "@angular/router/src/utils/collection";
 
 
 
 @Component({
   selector : 'app-factor-edit',
   templateUrl : './factor-edit.component.html',
-  providers : [StuffTypeService]
+  providers : [StuffTypeService,StuffTypeControlService]
 
 })
 
@@ -20,7 +22,7 @@ export class FactorEditComponent implements OnInit,OnChanges
 {
 
   stuffTypeList : StuffType[] =[];
-
+  selectedItem :StuffType;
 
   datePickerConfig = {
     drops: 'down',
@@ -36,7 +38,7 @@ export class FactorEditComponent implements OnInit,OnChanges
 
   private sub= new Subject<any>();
 
-  constructor(private fb : FormBuilder, private stuffTypeService :StuffTypeService)
+  constructor(private fb : FormBuilder, private stuffTypeService :StuffTypeService, private stcs : StuffTypeControlService)
   {
     // dateObject = moment('1395-11-22','jYYYY,jMM,jDD');
     // dateObject.format('jYYYY/jMM/jD');
@@ -61,6 +63,9 @@ this.aFactor= new Factor();
 
   ngOnChanges() {
 
+    this.stuffTypeService.getStuffTypes().then(items => this.stuffTypeList);
+
+
     let jmoment = moment(this.aFactor.purchaseDate);
 
     this.factorForm.reset({
@@ -75,14 +80,26 @@ this.aFactor= new Factor();
 
   ngOnInit()
   {
+    this.stuffTypeService.getStuffTypes().then(items => this.afterRecivedData(items));
+    this.selectedItem= new StuffType('onvan','mive','textbox') ;
 
-this.stuffTypeService.getStuffTypes().subs
+  }
+
+  private afterRecivedData(itemList : StuffType[])
+  {
+    this.stuffTypeList= itemList;
+     let controlList= this.stcs.toFormGroup(itemList);
+
+  this.factorForm.addControl('stuffTypeItems' , this.fb.group(controlList) );
+
 
 
   }
+
   revert() {
 
     // this.ngOnChanges();
+
     this.factorForm.reset();
 
   }
@@ -123,6 +140,16 @@ alert(it.purchaseDate);
 
 
 
+
+  }
+
+  onChange(event)
+  {
+
+    // alert(event);
+
+    // let testItem=  event;
+this.selectedItem= new StuffType('onvan','mive','textbox') ;
 
   }
 }

@@ -21,7 +21,8 @@ import {FactorListComponent} from "./factor/list/factor-list.component";
 import {FactorEditComponent} from "./factor/edit/factor-edit.component";
 import {DpDatePickerModule} from "ng2-jalali-date-picker";
 import {JalaliDatePipe} from "./pipes/JalaliDate.pipe";
-import {StuffTypeControlService} from "./stufftype/stuffType-control.service";
+import {StuffTypeDynamicComponent} from "./stufftype/dynamicform/stufftype-dynamic.component";
+
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import {StuffTypeControlService} from "./stufftype/stuffType-control.service";
     StuffTypeListComponent,
     FactorListComponent,
     FactorEditComponent,
-    StuffTypeControlService
+    StuffTypeDynamicComponent
 
   ],
   imports: [
