@@ -1,5 +1,5 @@
-import {Component, Input} from "@angular/core";
-import {FormGroup} from "@angular/forms";
+import {Component, EventEmitter, Input, OnChanges, Output} from "@angular/core";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {StuffType} from "../base/stufftype";
 @Component({
 
@@ -9,15 +9,38 @@ import {StuffType} from "../base/stufftype";
 
 
 })
-export  class StuffTypeDynamicComponent
+export  class StuffTypeDynamicComponent implements OnChanges
 {
+
+  // form_: FormGroup;
 
   @Input()
   selectedType: StuffType;
   @Input()
-  form: FormGroup;
+ form :FormGroup;
+
+
+constructor(private fb : FormBuilder)
+{}
+
   get isValid() { return this.form.controls[this.selectedType.key].valid; }
 
+ngOnChanges(eve)
+{
 
+  console.log("one change happened!!!!");
+
+}
+
+  onControlerChanges(event)
+  {
+
+
+    let controlList= event;
+
+    this.form.addControl('stuffTypeItems' , this.fb.group(controlList) );
+
+
+  }
 
 }

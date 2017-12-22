@@ -34,6 +34,9 @@ export class FactorEditComponent implements OnInit,OnChanges
 
   @Input() aFactor : Factor;
   @Output() saveOrUpdate = new EventEmitter<any>();
+  @Output() controlerChanges = new EventEmitter<any>();
+
+
 
 
   private sub= new Subject<any>();
@@ -43,13 +46,14 @@ export class FactorEditComponent implements OnInit,OnChanges
     // dateObject = moment('1395-11-22','jYYYY,jMM,jDD');
     // dateObject.format('jYYYY/jMM/jD');
 this.aFactor= new Factor();
-
+//     this.stuffTypeService.getStuffTypes().then(items => this.afterRecivedData(items));
+    console.log("first");
     this.createForm();
     this.sub.subscribe(mess => {this.factorForm.reset()});
 
   }
   createForm() : void {
-
+    this.selectedItem= new StuffType() ;
     this.factorForm = this.fb.group({
 
       title: ['', Validators.required],
@@ -80,19 +84,26 @@ this.aFactor= new Factor();
 
   ngOnInit()
   {
+    console.log("second");
     this.stuffTypeService.getStuffTypes().then(items => this.afterRecivedData(items));
     this.selectedItem= new StuffType('onvan','mive','textbox') ;
+
 
   }
 
   private afterRecivedData(itemList : StuffType[])
   {
-    this.stuffTypeList= itemList;
+
+
+
+
+
+   this.stuffTypeList= itemList;
      let controlList= this.stcs.toFormGroup(itemList);
 
   this.factorForm.addControl('stuffTypeItems' , this.fb.group(controlList) );
-
-
+this.controlerChanges.emit(controlList);
+console.log('finished!!!');
 
   }
 
@@ -149,7 +160,7 @@ alert(it.purchaseDate);
     // alert(event);
 
     // let testItem=  event;
-this.selectedItem= new StuffType('onvan','mive','textbox') ;
+this.selectedItem= new StuffType('noe','mive','number') ;
 
   }
 }
