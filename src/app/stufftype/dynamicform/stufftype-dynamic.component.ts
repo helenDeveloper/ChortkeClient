@@ -25,22 +25,16 @@ constructor(private fb : FormBuilder)
 
   get isValid() { return this.form.controls[this.selectedType.key].valid; }
 
+  // get testf() {
+  //
+  // return 'stuffTypeItems.'+this.selectedType.key;
+  //
+  // }
 ngOnChanges(eve)
 {
-
   console.log("one change happened!!!!");
-
+  console.log(this.form);
 }
 
-  onControlerChanges(event)
-  {
-
-
-    let controlList= event;
-
-    this.form.addControl('stuffTypeItems' , this.fb.group(controlList) );
-
-
-  }
 
 }

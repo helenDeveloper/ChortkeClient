@@ -19,12 +19,12 @@
 
 
   <label>stufftype_type:
-    <select formControlName="stuffType" (change)="onChange($event.target)" >
+    <select formControlName="stuffType" (change)="onChange()" >
       <option  *ngFor="let stf of stuffTypeList"  [value]="stf"   >{{stf.label}}</option>
     </select>
   </label>
 <div>
-  <app-type-component [selectedType]="selectedItem" [form]="factorForm"  (controlerChanges)="onControlerChanges($event)" ></app-type-component>
+  <app-type-component [selectedType]="selectedItem" [form]="factorForm"   ></app-type-component>
 
 </div>
 

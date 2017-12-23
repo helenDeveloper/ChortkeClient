@@ -32,9 +32,11 @@ export class FactorEditComponent implements OnInit,OnChanges
 
   factorForm: FormGroup;
 
+  // dynamicForm: FormGroup;
+
   @Input() aFactor : Factor;
   @Output() saveOrUpdate = new EventEmitter<any>();
-  @Output() controlerChanges = new EventEmitter<any>();
+
 
 
 
@@ -67,7 +69,7 @@ this.aFactor= new Factor();
 
   ngOnChanges() {
 
-    this.stuffTypeService.getStuffTypes().then(items => this.stuffTypeList);
+    // this.stuffTypeService.getStuffTypes().then(items => this.stuffTypeList);
 
 
     let jmoment = moment(this.aFactor.purchaseDate);
@@ -93,16 +95,17 @@ this.aFactor= new Factor();
 
   private afterRecivedData(itemList : StuffType[])
   {
+    // let controlList= this.stcs.toFormGroup(itemList);
+    // this.dynamicForm= controlList;
 
-
-
-
-
+    // this.factorForm.addControl('stuffTypeItems' , this.fb.group(controlList) );
    this.stuffTypeList= itemList;
-     let controlList= this.stcs.toFormGroup(itemList);
 
-  this.factorForm.addControl('stuffTypeItems' , this.fb.group(controlList) );
-this.controlerChanges.emit(controlList);
+
+  // this.factorForm.addControl('stuffTypeItems' , this.fb.group(controlList) );
+
+
+
 console.log('finished!!!');
 
   }
@@ -154,13 +157,16 @@ alert(it.purchaseDate);
 
   }
 
-  onChange(event)
+  onChange()
   {
+
+
+    this.selectedItem=  this.factorForm.get('stuffType').value;
 
     // alert(event);
 
     // let testItem=  event;
-this.selectedItem= new StuffType('noe','mive','number') ;
+// this.selectedItem= new StuffType('noe','mive','number') ;
 
   }
 }
