@@ -20,7 +20,7 @@
 
   <label>stufftype_type:
     <select formControlName="stuffType" (change)="onChange()" >
-      <option  *ngFor="let stf of stuffTypeList"  [value]="stf"   >{{stf.label}}</option>
+      <option  *ngFor="let stf of stuffTypeList "  [ngValue]="stf"   >{{stf.label}}</option>
     </select>
   </label>
 <div>

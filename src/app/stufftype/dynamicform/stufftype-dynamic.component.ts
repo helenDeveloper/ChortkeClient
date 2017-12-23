@@ -5,36 +5,49 @@ import {StuffType} from "../base/stufftype";
 
 
   selector: 'app-type-component',
-  templateUrl : './stufftype-dynamic.component.html'
+  templateUrl: './stufftype-dynamic.component.html'
 
 
 })
-export  class StuffTypeDynamicComponent implements OnChanges
-{
+export class StuffTypeDynamicComponent implements OnChanges {
 
+  private _selectedType: StuffType;
   // form_: FormGroup;
 
   @Input()
-  selectedType: StuffType;
+  set selectedType(value: StuffType) {
+
+    this._selectedType = value;
+    this.form.addControl();
+
+  }
+
+  get selectedType(): StuffType {
+    return this._selectedType;
+
+  }
+
+
   @Input()
- form :FormGroup;
+  form: FormGroup;
 
 
-constructor(private fb : FormBuilder)
-{}
+  constructor(private fb: FormBuilder) {
+  }
 
-  get isValid() { return this.form.controls[this.selectedType.key].valid; }
+  get isValid() {
+    return this.form.controls[this.selectedType.key].valid;
+  }
 
   // get testf() {
   //
   // return 'stuffTypeItems.'+this.selectedType.key;
   //
   // }
-ngOnChanges(eve)
-{
-  console.log("one change happened!!!!");
-  console.log(this.form);
-}
+  ngOnChanges(eve) {
+    console.log("one change happened!!!!");
+
+  }
 
 
 }
