@@ -20,6 +20,7 @@ import {forEach} from "@angular/router/src/utils/collection";
 export class FactorEditComponent implements OnInit, OnChanges {
 
   stuffTypeList: StuffType[] = [];
+  allStuffSelected: StuffType[] = [];
   selectedItem: StuffType;
 
   datePickerConfig = {
@@ -52,17 +53,19 @@ export class FactorEditComponent implements OnInit, OnChanges {
   }
 
   createForm(): void {
-    this.selectedItem = new StuffType();
+    // this.selectedItem = new StuffType();
     this.factorForm = this.fb.group({
 
       title: ['', Validators.required],
       price: ['', Validators.required],
       selectedDate: [''],
-      stuffType: ['', Validators.required]
+      stuffType: ['', Validators.required],
+      stuffTypeList: this.fb.group({})
 
     });
 
   }
+
 
   ngOnChanges() {
 
@@ -76,7 +79,8 @@ export class FactorEditComponent implements OnInit, OnChanges {
       title: this.aFactor.title,
       price: this.aFactor.price,
       selectedDate: jmoment.format("jYYYY/jMM/jDD"),
-      stuffType: this.aFactor.StuffTypes
+      stuffType: '',
+      stuffTypeList: []
     });
 
   }
@@ -84,7 +88,7 @@ export class FactorEditComponent implements OnInit, OnChanges {
   ngOnInit() {
     console.log("second");
     this.stuffTypeService.getStuffTypes().then(items => this.afterRecivedData(items));
-    this.selectedItem = new StuffType('onvan', 'mive', 'textbox');
+    // this.selectedItem = new StuffType('onvan', 'mive', 'textbox');
 
 
   }
@@ -147,7 +151,7 @@ export class FactorEditComponent implements OnInit, OnChanges {
   }
 
   onChange() {
-    this.selectedItem = this.factorForm.controls['stuffType'].value;
+    this.allStuffSelected.push(this.factorForm.controls['stuffType'].value);
 
   }
 }

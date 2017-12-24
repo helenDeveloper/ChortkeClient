@@ -1,4 +1,5 @@
 <div [formGroup]="form"  >
+  <div formGroupName="stuffTypeList">
   <label [attr.for]="selectedType.key">{{selectedType.label}}</label>
 
   <div [ngSwitch]="selectedType.contentType">
@@ -17,5 +18,12 @@
 
   </div>
 
-  <!--<div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>-->
+    <label [attr.for]="selectedType.key">componet price:</label>
+
+    <input [formControlName]="selectedType.key + 'price'"
+           [id]="selectedType.key" [type]="textbox">
+
+
+  <!--<div class="errorMessage" *ngIf="!isValid">{{ques4tion.label}} is required</div>-->
+</div>
 </div>

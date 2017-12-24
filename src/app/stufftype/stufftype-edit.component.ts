@@ -1,39 +1,41 @@
-import {Component, EventEmitter, Input, OnInit, Output,OnChanges } from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output, OnChanges} from "@angular/core";
 import {StuffType} from "./base/stufftype";
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {StuffTypeEnum} from "../eums/stufftypeemum";
-import { Observable } from 'rxjs';
-import { Subject } from 'rxjs/Subject';
+import {Observable} from 'rxjs';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
-  selector : 'app-stufftype-edit',
-  templateUrl : './stufftype-edit.component.html'
+  selector: 'app-stufftype-edit',
+  templateUrl: './stufftype-edit.component.html'
 
 })
 
-export class StuffTypeEditComponent implements OnInit,OnChanges
-{
+export class StuffTypeEditComponent implements OnInit, OnChanges {
 
   stuffTypeForm: FormGroup;
 
-  @Input() aStuffType : StuffType;
+  @Input() aStuffType: StuffType;
   @Output() saveOrUpdate = new EventEmitter<any>();
 
 
-  private sub= new Subject<any>();
+  private sub = new Subject<any>();
 
   types = StuffTypeEnum;
-  keys:any[];
-  constructor(private fb : FormBuilder)
-  {
+  keys: any[];
+
+  constructor(private fb: FormBuilder) {
 
     var allkeys = Object.keys(this.types);
-    this.keys =allkeys.slice(allkeys.length / 2);
+    this.keys = allkeys.slice(allkeys.length / 2);
     this.createForm();
-    this.sub.subscribe(mess => {this.stuffTypeForm.reset()});
+    this.sub.subscribe(mess => {
+      this.stuffTypeForm.reset()
+    });
 
   }
-  createForm() : void {
+
+  createForm(): void {
 
     this.stuffTypeForm = this.fb.group({
 
@@ -58,9 +60,8 @@ export class StuffTypeEditComponent implements OnInit,OnChanges
 
   }
 
-  ngOnInit()
-  {}
-
+  ngOnInit() {
+  }
 
 
   revert() {
@@ -74,17 +75,16 @@ export class StuffTypeEditComponent implements OnInit,OnChanges
   onSubmit() {
 
 
-    const  formModel =this.stuffTypeForm.value;
-    const saveStuffType : StuffType ={label : formModel.label as string,
-      key : formModel.key as string,
+    const formModel = this.stuffTypeForm.value;
+    const saveStuffType: StuffType = {
+      label: formModel.label as string,
+      key: formModel.key as string,
       contentType: formModel.contentType as string
     };
 
-    this.saveOrUpdate.emit({item :saveStuffType, abev : this.sub});
+    this.saveOrUpdate.emit({item: saveStuffType, abev: this.sub});
 
   }
-
-
 
 
   /*
@@ -97,8 +97,6 @@ export class StuffTypeEditComponent implements OnInit,OnChanges
 
 
    }*/
-
-
 
 
   /*
@@ -125,8 +123,6 @@ export class StuffTypeEditComponent implements OnInit,OnChanges
 
    });
    */
-
-
 
 
 }

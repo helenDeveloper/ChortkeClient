@@ -2,36 +2,39 @@
 
 <form novalidate [formGroup]="factorForm" (ngSubmit)="onSubmit()">
 
-<label>title:
-  <input type="text" formControlName="title" placeholder="title" >
+  <label>title:
+    <input type="text" formControlName="title" placeholder="title">
 
-</label>
+  </label>
 
   <label>price:
-    <input type="text"  formControlName="price"  placeholder="price" >
+    <input type="text" formControlName="price" placeholder="price">
 
   </label>
 
   <label>purchase date:
 
-  <input name="purchaseDateName" formControlName="selectedDate" [dpDayPicker]="datePickerConfig"  theme="dp-material" dir="rtl"  />
+    <input name="purchaseDateName" formControlName="selectedDate" [dpDayPicker]="datePickerConfig" theme="dp-material"
+           dir="rtl"/>
   </label>
 
 
   <label>stufftype_type:
-    <select formControlName="stuffType" (change)="onChange()" >
-      <option  *ngFor="let stf of stuffTypeList "  [ngValue]="stf"   >{{stf.label}}</option>
+    <select formControlName="stuffType" (change)="onChange()">
+      <option *ngFor="let stf of stuffTypeList " [ngValue]="stf">{{stf.label}}</option>
     </select>
   </label>
-<div>
-  <app-type-component [selectedType]="selectedItem" [form]="factorForm"   ></app-type-component>
-
-</div>
+  <div>
+    <div *ngFor="let sitem of allStuffSelected">
 
 
+      <app-type-component [selectedType]="sitem" [form]="factorForm"></app-type-component>
+    </div>
+  </div>
 
-<button type="submit" [disabled]="factorForm.pristine" >save or update</button>
-<button type="reset" (click)="revert()" [disabled]="factorForm.pristine" >revert</button>
+
+  <button type="submit" [disabled]="factorForm.pristine">save or update</button>
+  <button type="reset" (click)="revert()" [disabled]="factorForm.pristine">revert</button>
 
 
- </form>
+</form>
