@@ -6,44 +6,45 @@ import {Subject} from "rxjs/Subject";
 
 @Component({
   /*selector : 'wi_stufftype_combo',*/
-  templateUrl : './stufftype-list.component.html',
-  providers : [StuffTypeService]
+  templateUrl: './stufftype-list.component.html',
+  providers: [StuffTypeService]
 
 })
 
-export class StuffTypeListComponent implements OnInit
-{
+export class StuffTypeListComponent implements OnInit {
 
-  stuffTypes : StuffType[];
+  stuffTypes: StuffType[];
   selectedItem: StuffType;
 
-  constructor(private  stuffTypeService : StuffTypeService)
-  {
+  constructor(private  stuffTypeService: StuffTypeService) {
 
-      this.selectedItem= new StuffType();
+    this.selectedItem = new StuffType();
   }
-  onSelect(st :StuffType) :void {
 
-    this.selectedItem=st;
+  onSelect(st: StuffType): void {
 
-  }
-  ngOnInit()
-  {
-
-this.stuffTypeService.getStuffTypes().then(res => this.stuffTypes = res);
+    this.selectedItem = st;
 
   }
-  onSaveOrUpdate(event)
-  {
 
+  ngOnInit() {
 
-
-    this.stuffTypeService.saveOrUpdateStuffType(event.item).then(res => { this.addToList(res,event)});
+    this.stuffTypeService.getStuffTypes().then(res => this.stuffTypes = res);
 
   }
-  private  addToList(res: number,event)
-  {
-    const stuffType =new StuffType(event.item.key,event.item.label, event.item.contentType);
+
+  onSaveOrUpdate(event) {
+
+
+
+    this.stuffTypeService.saveOrUpdateStuffType(event.item).then(res => {
+      this.addToList(res, event);
+    });
+
+  }
+
+  private  addToList(res: number, event) {
+    const stuffType = new StuffType(event.item.key, event.item.label, event.item.contentType);
     // stuffType.label=event.label;
     // stuffType.contentType= event.contentType;
     this.stuffTypes.push(stuffType);
@@ -52,12 +53,12 @@ this.stuffTypeService.getStuffTypes().then(res => this.stuffTypes = res);
 
   }
 
-  private  showMessage(su : Subject<any>) : void {
+  private  showMessage(su: Subject<any>): void {
 
-su.next();
+    su.next();
     alert('hello');
 
-    this.selectedItem= new StuffType();
+    this.selectedItem = new StuffType();
 
   }
 }

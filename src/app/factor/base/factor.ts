@@ -6,9 +6,10 @@ export class Factor
   id ?: number;
   title:string;
   price: number;
-   StuffTypes?: StuffType[];
+   stuffTypes?: StuffType[];
    purchaseDate?: Date;
    buyer?: User;
+   controllerList : any[];
 
 
    constructor()

@@ -22,6 +22,7 @@ export class StuffTypeDynamicComponent implements OnChanges {
     this._selectedType = value;
     if (!isUndefined(this._form)) {
       this.stuffTypeList.addControl(value.key, new FormControl(''));
+      this.stuffTypeList.addControl(value + 'Price', new FormControl(''));
 
     }
   }
@@ -37,6 +38,7 @@ export class StuffTypeDynamicComponent implements OnChanges {
 
     this._form = fvalue;
     this.stuffTypeList.addControl(this._selectedType.key, new FormControl(''));
+    this.stuffTypeList.addControl(this._selectedType.key + 'Price', new FormControl(''));
     this.fb.group(this._selectedType);
   }
 

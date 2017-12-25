@@ -118,8 +118,10 @@ export class FactorEditComponent implements OnInit, OnChanges {
 
   onSubmit() {
 
+    debugger;
 
     const formModel = this.factorForm.value;
+    console.log(formModel);
 
     // alert(formModel.selectedDate);
     let jDate = moment(formModel.selectedDate, 'jYYYY/jMM/jDD').locale('en').format('YYYY/MM/DD'); // 1989/01/24
@@ -129,7 +131,11 @@ export class FactorEditComponent implements OnInit, OnChanges {
 
     const saveFactor: Factor = {
       title: formModel.title as string,
-      price: formModel.price as number, purchaseDate: mDate
+      price: formModel.price as number,
+      purchaseDate: mDate,
+      stuffTypes: this.allStuffSelected,
+      controllerList: formModel.stuffTypeList.controls
+
     };
 
     // this.sho(saveFactor);
